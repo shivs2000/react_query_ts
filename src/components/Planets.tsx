@@ -1,11 +1,11 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import Planet from "./Planet";
+const fetchPlanets = async () => {
+  const res = await fetch(`https://swapi.dev/api/planets/`);
+  return res.json();
+};
 const Planets = () => {
-  const fetchPlanets = async () => {
-    const res = await fetch(`https://swapi.dev/api/planets/1/`);
-    return res.json();
-  };
   const { data, status } = useQuery(["planets"], fetchPlanets);
   console.log(data);
   return (
@@ -14,7 +14,7 @@ const Planets = () => {
       <p>{status}</p>
       {status === "error" && <div> Oops Error Occured</div>}
       {status === "loading" && <div>Loding Wait!!</div>}
-      {status === "success" && (
+      {status === "success" && data && (
         <div>
           {data.results.map((planet: any) => (
             <Planet

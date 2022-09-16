@@ -1,4 +1,3 @@
-import React from "react";
 type PlanetProps = {
   name: string;
   population: string;

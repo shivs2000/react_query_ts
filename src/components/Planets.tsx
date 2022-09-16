@@ -1,4 +1,3 @@
-import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import Planet from "./Planet";
 const fetchPlanets = async () => {
